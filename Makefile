@@ -1,17 +1,18 @@
 BINARY_NAME = my-app
+PARTICLE_CLI ?= npx particle
 DEVICE_TYPE ?= photon
 FIRMWARE = $(BINARY_NAME)-$(DEVICE_TYPE).bin
 
 .PHONY: all install install-usb clean checkenv enter-dfu-mode
 
 $(FIRMWARE):
-	particle compile $(DEVICE_TYPE) . --saveTo $(FIRMWARE)
+	$(PARTICLE_CLI) compile $(DEVICE_TYPE) . --saveTo $(FIRMWARE)
 
 install: checkenv $(FIRMWARE) ## Build the firmware and flash it via the Particle Cloud
-	particle flash $(DEVICE_NAME) $(FIRMWARE)
+	$(PARTICLE_CLI) flash $(DEVICE_NAME) $(FIRMWARE)
 
 install-usb: $(FIRMWARE) enter-dfu-mode ## Build the firmware and flash it via USB
-	particle flash --usb $(FIRMWARE)
+	$(PARTICLE_CLI) flash --usb $(FIRMWARE)
 
 clean: ## Delete all firmware files
 	rm -f *.bin

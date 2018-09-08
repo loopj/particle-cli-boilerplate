@@ -9,8 +9,8 @@ This boilerplate repo is a template for new Particle projects, allowing you to b
 You must have a copy of the [Particle CLI](https://docs.particle.io/reference/cli/) installed on your machine and you must be signed in to the Particle Cloud:
 
 ```shell
-$ npm install -g particle-cli
-$ particle cloud login
+$ npm install
+$ npx particle cloud login
 ```
 
 ## Directory structure
